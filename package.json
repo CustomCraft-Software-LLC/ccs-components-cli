@@ -1,0 +1,16 @@
+{
+  "name": "ccs-components-cli",
+  "version": "1.0.0",
+  "description": "CLI tool for generating components",
+  "main": "cli.js",
+  "bin": {
+    "ccs-components-cli": "./cli.js"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "plop": "^4.0.1"
+  },
+  "scripts": {
+    "start": "node cli.js"
+  }
+}
