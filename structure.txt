@@ -5,12 +5,21 @@
 ├── package-lock.json
 ├── plopfile.js
 ├── README.md
+├── src
+│   └── components
+│       ├── CallToAction.js
+│       ├── Custom.js
+│       ├── Header.js
+│       ├── Hero.js
+│       └── Navbar.js
 ├── structure.txt
 └── templates
     ├── CallToAction.js.hbs
     ├── Component.js.hbs
+    ├── Footer.js.hbs
     ├── Header.js.hbs
     ├── Hero.js.hbs
-    └── Navbar.js.hbs
+    ├── Navbar.js.hbs
+    └── PricingCard.js.hbs
 
-1 directory, 12 files
+3 directories, 19 files

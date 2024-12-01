@@ -14,6 +14,8 @@ export default function (plop) {
           'Navbar',
           'Header',
           'Custom',
+          'Footer',
+          'PricingCard'
         ],
       },
     ],

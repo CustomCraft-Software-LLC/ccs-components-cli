@@ -1,0 +1,24 @@
+import React from 'react';
+import { Box, Typography, List, ListItem, ListItemText, Divider } from '@mui/material';
+
+const Sitemap = ({ pages }) => {
+  return (
+    <Box>
+      <Typography variant="h4" gutterBottom>
+        Sitemap
+      </Typography>
+      <List>
+        {pages.map((page, index) => (
+          <React.Fragment key={page.title}>
+            <ListItem button component="a" href={page.link}>
+              <ListItemText primary={page.title} />
+            </ListItem>
+            {index < pages.length - 1 && <Divider />}
+          </React.Fragment>
+        ))}
+      </List>
+    </Box>
+  );
+};
+
+export default Sitemap;
