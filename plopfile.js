@@ -19,19 +19,19 @@ export default function (plop) {
     ],
     actions: (data) => {
       const componentName = data.name;
-      let templateComponent;
+      let templateFile;
 
       if (componentName === 'Custom') {
-        templateComponent = 'Component.js.hbs';
+        templateFile = 'Component.js.hbs';
       } else {
-        templateComponent = `${componentName}.js.hbs`;
+        templateFile = `${componentName}.js.hbs`;
       }
 
       return [
         {
           type: 'add',
-          path: `src/pages/{{pascalCase name}}Component.js`,
-          templateComponent: path.resolve(`templates/${templateComponent}`),
+          path: `src/components/{{pascalCase name}}.js`,
+          templateFile: path.resolve(`templates/${templateFile}`),
         },
       ];
     },
