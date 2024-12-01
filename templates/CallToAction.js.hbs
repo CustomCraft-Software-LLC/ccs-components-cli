@@ -1,0 +1,26 @@
+import React from 'react';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+
+const CallToAction = () => {
+    return (
+        <Box>
+            <Typography variant="h4" gutterBottom>
+                {{ctaTitle}}
+            </Typography>
+            <Typography variant="body1">
+                {{ctaDescription}}
+            </Typography>
+            <Button
+                variant="contained"
+                color="primary"
+                href="{{ctaLink}}"
+            >
+                {{ctaButtonText}}
+            </Button>
+        </Box>
+    );
+};
+
+export default CallToAction;

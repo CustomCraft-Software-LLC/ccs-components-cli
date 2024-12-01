@@ -1,0 +1,16 @@
+.
+├── cli.js
+├── LICENSE
+├── package.json
+├── package-lock.json
+├── plopfile.js
+├── README.md
+├── structure.txt
+└── templates
+    ├── CallToAction.js.hbs
+    ├── Component.js.hbs
+    ├── Header.js.hbs
+    ├── Hero.js.hbs
+    └── Navbar.js.hbs
+
+1 directory, 12 files

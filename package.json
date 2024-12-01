@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "CLI tool for generating components",
   "main": "cli.js",
+  "type": "module",
   "bin": {
     "ccs-components-cli": "./cli.js"
   },
   "dependencies": {
+    "@mui/icons-material": "^6.1.9",
+    "@mui/material": "^6.1.9",
     "commander": "^12.1.0",
     "plop": "^4.0.1"
   },
