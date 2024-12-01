@@ -16,10 +16,12 @@
 └── templates
     ├── CallToAction.js.hbs
     ├── Component.js.hbs
+    ├── ContactInfo.js.hbs
     ├── Footer.js.hbs
     ├── Header.js.hbs
     ├── Hero.js.hbs
     ├── Navbar.js.hbs
-    └── PricingCard.js.hbs
+    ├── PricingCard.js.hbs
+    └── Sitemap.js.hbs
 
-3 directories, 19 files
+3 directories, 21 files
