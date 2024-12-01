@@ -12,10 +12,12 @@ export default function (plop) {
           'Hero',
           'CallToAction',
           'Navbar',
+          'PricingCard',
           'Header',
           'Custom',
           'Footer',
-          'PricingCard'
+          'ContactInfo',
+          'Sitemap'
         ],
       },
     ],

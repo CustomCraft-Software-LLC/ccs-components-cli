@@ -7,7 +7,7 @@ const program = new Command();
 program
   .name('ccs-components-cli')
   .description('CLI tool for generating React components with MUI styling')
-  .version('1.0.0', '-v, --version', 'Output the current version')
+  .version('1.0.1', '-v, --version', 'Output the current version')
   .helpOption('-h, --help', 'Display help for command');
 
 program
