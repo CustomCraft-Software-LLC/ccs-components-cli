@@ -1,5 +1,6 @@
 .
-├── cli.js
+├── bin
+│   └── cli.js
 ├── LICENSE
 ├── package.json
 ├── package-lock.json
@@ -7,11 +8,6 @@
 ├── README.md
 ├── src
 │   └── components
-│       ├── CallToAction.js
-│       ├── Custom.js
-│       ├── Header.js
-│       ├── Hero.js
-│       └── Navbar.js
 ├── structure.txt
 └── templates
     ├── CallToAction.js.hbs
@@ -24,4 +20,4 @@
     ├── PricingCard.js.hbs
     └── Sitemap.js.hbs
 
-3 directories, 21 files
+4 directories, 16 files
