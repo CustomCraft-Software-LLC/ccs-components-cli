@@ -1,48 +1,63 @@
-#!/usr/bin/env node
+import fs from 'fs';
+import path from 'path';
+import { Command } from 'commander';
+import Handlebars from 'handlebars';
+import { fileURLToPath } from 'url';  
+import inquirer from 'inquirer';
 
-import { Command } from 'commander';  // Importing commander
-import path from 'path';              // Path module for file resolution
-import { fileURLToPath } from 'url';  // To handle __dirname in ES modules
-
-// Get the current directory of the script
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = path.dirname(__filename); 
 
 const program = new Command();
 
 program
   .name('ccs-components-cli')
   .description('Generate React components with MUI styling')
-  .version('1.0.3');
+  .version('1.0.4');
 
-// Command to generate a component
 program
   .command('generate')
   .description('Generate a new React component')
   .action(async () => {
     try {
-      // Dynamically import Plop
-      const plopModule = await import('plop'); // Correct dynamic import
-      const plop = plopModule.plop; // Access plop function directly
+      const { componentName } = await inquirer.prompt([
+        {
+          type: 'list',
+          name: 'componentName',
+          message: 'Select the component you want to generate:',
+          choices: [
+            'Hero',
+            'CallToAction',
+            'Navbar',
+            'PricingCard',
+            'Header',
+            'Footer',
+            'ContactInfo',
+            'Sitemap',
+            'Component'
+          ],
+        },
+      ]);
 
-      // Initialize Plop with the plopfile.js location
-      const plopInstance = plop(path.join(__dirname, '../plopfile.js'));
-      const generator = plopInstance.getGenerator('Component');
-      
-      // Run the generator without the need for a component name
-      const results = await generator.runActions({});
-      
-      console.log('\n✅ Component generated successfully!\n');
-      results.changes.forEach((change) => console.log(`Added: ${change.path}`));
-      results.failures.forEach((failure) => console.error(`Error: ${failure.error || failure.message}`));
+      const templatePath = path.resolve(__dirname, '../templates', `${componentName}.js.hbs`);
+      const templateContent = fs.readFileSync(templatePath, 'utf-8');
+
+      const template = Handlebars.compile(templateContent);
+
+      const data = {
+        name: componentName,
+        description: `${componentName} component`,
+      };
+
+      const output = template(data);
+
+      const outputPath = path.resolve(__dirname, '../src', 'components', `${componentName}.js`);
+      fs.writeFileSync(outputPath, output);
+
+      console.log(`\n✅ Component "${componentName}" generated successfully!`);
     } catch (error) {
       console.error('❌ Failed to generate component:', error.message);
     }
   });
-
-// Parse the command-line arguments
-if (!process.argv.slice(2).length) {
-  program.help();
-}
 
 program.parse(process.argv);
