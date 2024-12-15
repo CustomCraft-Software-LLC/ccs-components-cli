@@ -13,7 +13,7 @@ const program = new Command();
 program
   .name('ccs-components-cli')
   .description('Generate React components with MUI styling')
-  .version('1.0.4');
+  .version('1.0.5');
 
 program
   .command('generate')
@@ -44,12 +44,9 @@ program
 
       const template = Handlebars.compile(templateContent);
 
-      const data = {
-        name: componentName,
-        description: `${componentName} component`,
-      };
-
-      const output = template(data);
+      const output = template({
+        name: componentName
+      });
 
       const outputPath = path.resolve(__dirname, '../src', 'components', `${componentName}.js`);
       fs.writeFileSync(outputPath, output);
