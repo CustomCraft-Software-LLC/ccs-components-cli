@@ -4,11 +4,11 @@ import fs from 'fs';
 import path from 'path';
 import { Command } from 'commander';
 import Handlebars from 'handlebars';
-import { fileURLToPath } from 'url';  
+import { fileURLToPath } from 'url';
 import inquirer from 'inquirer';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename); 
+const __dirname = path.dirname(__filename);
 
 const program = new Command();
 
@@ -21,42 +21,43 @@ program
   .command('generate')
   .description('Generate a new React component')
   .action(async () => {
-    try {
-      const { componentName } = await inquirer.prompt([
-        {
-          type: 'list',
-          name: 'componentName',
-          message: 'Select the component you want to generate:',
-          choices: [
-            'Hero',
-            'CallToAction',
-            'Navbar',
-            'PricingCard',
-            'Header',
-            'Footer',
-            'ContactInfo',
-            'Sitemap',
-            'Component'
-          ],
-        },
-      ]);
+    const { componentName } = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'componentName',
+        message: 'Select the component you want to generate:',
+        choices: [
+          'Hero',
+          'CallToAction',
+          'Navbar',
+          'PricingCard',
+          'Header',
+          'Footer',
+          'ContactInfo',
+          'Sitemap',
+          'Component',
+        ],
+      },
+    ]);
 
-      const templatePath = path.resolve(__dirname, '../templates', `${componentName}.js.hbs`);
-      const templateContent = fs.readFileSync(templatePath, 'utf-8');
+    const cwd = process.cwd();
+    const templatePath = path.resolve(__dirname, '../templates', `${componentName}.js.hbs`);
+    const outputPath = path.resolve(cwd, 'src/components', `${componentName}.js`);
 
-      const template = Handlebars.compile(templateContent);
-
-      const output = template({
-        name: componentName
-      });
-
-      const outputPath = path.resolve(__dirname, '../src', 'components', `${componentName}.js`);
-      fs.writeFileSync(outputPath, output);
-
-      console.log(`\n✅ Component "${componentName}" generated successfully!`);
-    } catch (error) {
-      console.error('❌ Failed to generate component:', error.message);
+    if (!fs.existsSync(templatePath)) {
+      console.error(`Template for component "${componentName}" not found.`);
+      return;
     }
+
+    const templateContent = fs.readFileSync(templatePath, 'utf-8');
+    const template = Handlebars.compile(templateContent);
+
+    const output = template({ name: componentName });
+
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    fs.writeFileSync(outputPath, output);
+
+    console.log(`\n✅ Component "${componentName}" generated successfully at ${outputPath}`);
   });
 
 program.parse(process.argv);
