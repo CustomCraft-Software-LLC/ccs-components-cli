@@ -1,6 +1,6 @@
 {
   "name": "ccs-components-cli",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "CLI tool for generating components",
   "main": "./bin/cli.js",
   "type": "module",
