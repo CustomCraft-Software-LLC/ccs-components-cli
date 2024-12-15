@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import fs from 'fs';
 import path from 'path';
 import { Command } from 'commander';
@@ -13,7 +15,7 @@ const program = new Command();
 program
   .name('ccs-components-cli')
   .description('Generate React components with MUI styling')
-  .version('1.0.5');
+  .version('1.0.6');
 
 program
   .command('generate')
