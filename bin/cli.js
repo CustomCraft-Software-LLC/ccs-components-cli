@@ -15,7 +15,7 @@ const program = new Command();
 program
   .name('ccs-components-cli')
   .description('Generate React components with MUI styling')
-  .version('1.0.8');
+  .version('1.0.9');
 
 program
   .command('generate')

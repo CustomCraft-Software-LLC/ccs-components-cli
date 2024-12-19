@@ -11,11 +11,14 @@
     "@mui/icons-material": "^6.1.9",
     "@mui/material": "^6.1.9",
     "commander": "^12.1.0",
+    "fs-extra": "^11.2.0",
     "handlebars": "^4.7.8",
     "inquirer": "^12.2.0",
+    "path": "^0.12.7",
     "plop": "^4.0.1"
   },
   "scripts": {
-    "start": "node ./bin/cli.js"
+    "start": "node ./bin/cli.js",
+    "generate-stories": "node ./generate-stories.js"
   }
 }
