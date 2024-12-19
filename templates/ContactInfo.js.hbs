@@ -1,35 +1,39 @@
 import React from 'react';
-import { Box, Typography, Grid, IconButton } from '@mui/material';
+import { Box, Typography, IconButton } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+  },
+  contactItem: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+  }
+};
+
 const ContactInfo = ({ phone, email, address }) => {
   const contacts = [
-    { icon: <PhoneIcon />, label: 'Phone', value: phone },
-    { icon: <EmailIcon />, label: 'Email', value: email },
-    { icon: <LocationOnIcon />, label: 'Address', value: address },
+    { icon: <PhoneIcon />, value: phone },
+    { icon: <EmailIcon />, value: email },
+    { icon: <LocationOnIcon />, value: address },
   ];
 
   return (
-    <Box>
-      <Grid container spacing={2}>
-        {contacts.map((contact, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Box>
-              <IconButton color="primary" size="large">
-                {contact.icon}
-              </IconButton>
-              <Box>
-                <Typography variant="h6">{contact.label}</Typography>
-                <Typography variant="body1">
-                  {contact.value}
-                </Typography>
-              </Box>
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
+    <Box sx={styles.container}>
+      {contacts.map((contact, index) => (
+        <Box key={index} sx={styles.contactItem}>
+          <IconButton color="primary" size="large">
+            {contact.icon}
+          </IconButton>
+          <Typography variant="body1">{contact.value}</Typography>
+        </Box>
+      ))}
     </Box>
   );
 };

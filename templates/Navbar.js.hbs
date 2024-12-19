@@ -7,49 +7,68 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Box from '@mui/material/Box';
 
+const styles = {
+  appBar: {
+    position: 'static',
+    backgroundColor: 'primary.main',
+  },
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  brand: {
+    fontWeight: 'bold',
+    cursor: 'pointer',
+  },
+  menuButton: {
+    color: 'inherit',
+  },
+};
+
 const Navbar = () => {
-    const [servicesMenuAnchor, setServicesMenuAnchor] = useState(null);
+  const [servicesMenuAnchor, setServicesMenuAnchor] = useState(null);
 
-    const handleMenuOpen = (event) => {
-        setServicesMenuAnchor(event.currentTarget);
-    };
+  const handleMenuOpen = (event) => {
+    setServicesMenuAnchor(event.currentTarget);
+  };
 
-    const handleMenuClose = () => {
-        setServicesMenuAnchor(null);
-    };
+  const handleMenuClose = () => {
+    setServicesMenuAnchor(null);
+  };
 
-    return (
-        <AppBar position="static">
-            <Toolbar>
-                <Typography variant="h6" component="div">
-                    MyBrand
-                </Typography>
-                <Box>
-                    <Button color="inherit" href="/">Home</Button>
-                    <Button color="inherit" href="/about">About</Button>
-                    <Button color="inherit" onClick={handleMenuOpen}>
-                        Services
-                    </Button>
-                    <Menu
-                        anchorEl={servicesMenuAnchor}
-                        open={Boolean(servicesMenuAnchor)}
-                        onClose={handleMenuClose}
-                    >
-                        <MenuItem onClick={handleMenuClose} component="a" href="/services/web-design">
-                            Web Design
-                        </MenuItem>
-                        <MenuItem onClick={handleMenuClose} component="a" href="/services/seo">
-                            SEO
-                        </MenuItem>
-                        <MenuItem onClick={handleMenuClose} component="a" href="/services/marketing">
-                            Marketing
-                        </MenuItem>
-                    </Menu>
-                    <Button color="inherit" href="/contact">Contact</Button>
-                </Box>
-            </Toolbar>
-        </AppBar>
-    );
+  return (
+    <AppBar sx={styles.appBar}>
+      <Toolbar sx={styles.toolbar}>
+        <Typography variant="h6" sx={styles.brand}>
+          MyBrand
+        </Typography>
+        <Box>
+          <Button sx={styles.menuButton} href="/">Home</Button>
+          <Button sx={styles.menuButton} href="/about">About</Button>
+          <Button sx={styles.menuButton} onClick={handleMenuOpen}>
+            Services
+          </Button>
+          <Menu
+            anchorEl={servicesMenuAnchor}
+            open={Boolean(servicesMenuAnchor)}
+            onClose={handleMenuClose}
+          >
+            <MenuItem onClick={handleMenuClose} component="a" href="/services/web-design">
+              Web Design
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose} component="a" href="/services/seo">
+              SEO
+            </MenuItem>
+            <MenuItem onClick={handleMenuClose} component="a" href="/services/marketing">
+              Marketing
+            </MenuItem>
+          </Menu>
+          <Button sx={styles.menuButton} href="/contact">Contact</Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
+  );
 };
 
 export default Navbar;

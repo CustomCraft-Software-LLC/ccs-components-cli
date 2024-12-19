@@ -36,6 +36,7 @@ program
           'ContactInfo',
           'Sitemap',
           'Component',
+          'Image'
         ],
       },
     ]);

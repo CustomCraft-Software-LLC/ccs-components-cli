@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, List, ListItem, ListItemText, Divider } from '@mui/material';
+import { Box, Typography, Divider, Link } from '@mui/material';
 
 const Sitemap = ({ pages }) => {
   return (
@@ -7,16 +7,18 @@ const Sitemap = ({ pages }) => {
       <Typography variant="h4" gutterBottom>
         Sitemap
       </Typography>
-      <List>
+      <Box>
         {pages.map((page, index) => (
           <React.Fragment key={page.title}>
-            <ListItem button component="a" href={page.link}>
-              <ListItemText primary={page.title} />
-            </ListItem>
+            <Box>
+              <Link href={page.link} underline="hover" variant="body1" color="primary">
+                {page.title}
+              </Link>
+            </Box>
             {index < pages.length - 1 && <Divider />}
           </React.Fragment>
         ))}
-      </List>
+      </Box>
     </Box>
   );
 };
